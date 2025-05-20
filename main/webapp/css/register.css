@@ -1,0 +1,171 @@
+@charset "UTF-8";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* font-family: "Josefin Sans", sans-serif; */
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("../resources/Images/background3.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+
+/* This is the div where every element is there.  */
+.register-main {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* The CSS code you provided is styling the elements with the classes `.register-heading-main` and
+`.register-logo`. */
+.register-heading-main {
+  position: absolute;
+  top: 150px;
+  left: 120px;
+  color: rgba(255, 255, 255, 0.334);
+  font-size: 60px;
+  text-align: center;
+  transition: .4s ease-in-out;
+}
+
+.register-heading-main:hover {
+  color: rgba(255, 255, 255, 0.829);
+  transform: scale(1.1);
+}
+
+
+.register-logo {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+.register-logo img {
+  width: 100px;
+  height: 100px;
+}
+
+/* The CSS code for `.register-form` is styling a form element with the following properties: */
+.register-form {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 500px;
+  background-color: rgb(245, 245, 245);
+  /* border-radius: 30px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  padding-right: 60px;
+  transition: .4s ease-in-out;
+  /* margin: auto; */
+  /* padding: auto; */
+}
+
+.register-form:focus-within {
+  width: 600px;
+}
+
+
+/* The CSS code you provided is styling elements within classes `.register-heading` and
+`.register-input`. */
+.register-heading {
+  position: relative;
+  bottom: 30px;
+  /* margin-bottom: 10px;
+  text-align: center; */
+  margin: 10px auto;
+}
+
+.register-heading h1 {
+  margin-bottom: 10px;
+}
+
+.register-input label {
+  font-size: 24px;
+  text-align: left;
+  margin-right: 30px;
+  text-align: right;
+  /* width: 50px; */
+  /* text-align: right; */
+}
+
+
+/* The CSS code you provided is styling the input fields within an element with the class
+`.register-input`. */
+.register-input input {
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  padding: 0 20px;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  box-shadow: 1px 1px 2px 2px rgba(190, 187, 187, 0.568),
+    -1px -1px 2px 2px rgba(190, 187, 187, 0.568);
+    transition: 1s ease-in;
+    background-color: rgb(255, 255, 255);
+    /* border: 2px solid rgb(70, 69, 69); */
+    transition: .5s ease;
+  }
+  
+  .register-input input:focus-within {
+    box-shadow: inset 1px 1px 2px 2px rgba(190, 188, 188, 0.568),
+    inset -1px -1px 2px 2px rgba(190, 188, 188, 0.568);
+    width: 350px;
+}
+
+
+.login-link {
+  margin: 20px auto;
+  /* position: relative;
+  right: 260px;
+  margin-bottom: 20px; */
+  text-underline-offset: 4px;
+  transition: .4s ease-in-out;
+  padding-right: 150px;
+}
+
+.login-link:hover {
+  transform: scale(1.1);
+}
+
+
+/* The CSS code you provided is styling a button element with the class `.register-button`. Here's what
+each property is doing: */
+.register-button {
+  margin: 0 auto;
+  position: relative;
+  left: 40px;
+  width: 200px;
+  height: 50px;
+  font-size: 25px;
+  border-radius: 30px;
+  box-shadow: 2px 2px 2px 2px rgba(189, 187, 187, 0.568),
+      -2px -2px 2px 2px rgba(189, 187, 187, 0.568);
+  border: none;
+  outline: none;
+  color: rgb(0, 0, 0);
+  background-color: rgba(67, 26, 156, 0.788);
+}
+
+.register-button:active {
+  transform: scale(1.1);
+  transition: .3s ease-in-out;
+}
+

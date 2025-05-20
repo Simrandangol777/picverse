@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+	position: absolute;
+    min-height: 100vh;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+/* This is the main style of the footer.  */
+.main {
+    margin-top: 30px;
+    width: 100%;
+    height: 350px;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(187, 208, 255);
+    box-shadow: -2px 0 2px rgba(0, 0, 0, 0.537);
+    text-align: center;
+}
+
+/* This style is for the the main footer.  */
+.footer-text {
+    padding: 10px 20px;
+    margin-top: 2rem;
+    font-size: .79rem;
+    opacity: .5;
+    font-weight: 100;
+    list-style-type: none;
+    line-height: 2;
+}
+
+/* This style is for the last footer of the text for the copyright.  */
+.footer-last {
+    padding: 10px 20px;
+    font-size: .8rem;
+    font-weight: 300;
+}
+
+
+/* This style is for the text of the footer.  */	
+.footer-text p:hover {
+    text-decoration: underline;
+}
+

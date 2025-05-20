@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+/* Footer styles */
+
+
+/* This is the main style of the footer.  */
+.footer-main {
+	width: 300px;
+	height: 100vh;
+	position: fixed;
+	top: 70px;
+	right: 0;
+	background-color: #ffffff;
+	box-shadow: -1px 0 1px rgb(255 255 255 / 50%);
+	padding: 20px 0;
+}
+
+/* This is for the heading part of the friend */
+.friend-heading {
+	display: flex;
+	padding: 10px 20px;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.friend-heading h2 {
+	font-size: 19px;
+	font-weight: 300;
+}
+
+.friend-heading a {
+	text-decoration: none;
+}
+
+/* This is the style for the friend list.  */
+.friend-list {
+	display: flex;
+	flex-direction: column;
+	align-items: space-evenly;
+	height: 60%;
+	padding: 0 20px;
+}
+
+/* This style is for the friend bar.  */
+.friend {
+	margin-right: 30px;
+	width: 100%;
+	min-height: 60px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	border-radius: 20px;
+	padding: 0 10px;
+}
+
+/* This style is for the friend profile picture.  */
+.friend-img {
+	width: 45px;
+	height: 45px;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+
+/* This style is for the name of the friend */
+.friend h3 {
+	position: absolute;
+	left: 100px;
+}
+
+/* This style is for the the main footer.  */
+.footer-text {
+	padding: 10px 20px;
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 2rem;
+	font-size: .79rem;
+	opacity: .5;
+	font-weight: 100;
+	list-style-type: none;
+}
+
+/* This style is for the last footer of the text for the copyright.  */
+.footer-last {
+	padding: 10px 20px;
+	font-size: .8rem;
+	font-weight: 300;
+}
+
+/* This is the hover effect for the friend box. */
+.friend:hover {
+	background-color: transparent;
+	box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.152), -1px -1px 1px
+		rgba(0, 0, 0, 0.152);
+}
+
+/* This style is for the text of the footer.  */
+.footer-text span:hover {
+	text-decoration: underline;
+}
