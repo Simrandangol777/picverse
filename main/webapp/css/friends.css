@@ -1,0 +1,87 @@
+@charset "UTF-8";
+
+/* Main container with spacing */
+.friends-main {
+    margin: 100px 0 0 250px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1x0px;
+}
+
+/* Each column */
+.friends-column {
+    flex: 1;
+    margin: 0 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Column headers */
+.friends-column h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #2f3542;
+    text-align: center;
+}
+
+/* User card */
+.friends-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    padding: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+/* Hover effect */
+.friends-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Profile picture */
+.friends-profile-pic {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 12px;
+}
+
+/* Info column */
+.friends-info {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Username */
+.friends-username {
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: #2f3542;
+    text-decoration: none;
+}
+
+/* Status line */
+.friends-status {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* Anchor style (used instead of button) */
+.friends-link {
+    margin-left: auto;
+    color: #0077cc;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.friends-link:hover {
+    text-decoration: underline;
+    color: #005fa3;
+}
