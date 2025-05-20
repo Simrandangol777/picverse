@@ -26,6 +26,8 @@
 
 					<div class="home-user-content">
 						<span class="home-username">${post.username}</span>
+						<!-- For the time stamp -->
+						<p>${post.timeAgo}</p>
 					</div>
 				</div>
 

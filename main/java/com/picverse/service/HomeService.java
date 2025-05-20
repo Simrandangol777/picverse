@@ -29,7 +29,7 @@ public class HomeService {
 			 * The subquery counts the number of likes for each post and checks if the user
 			 * has liked the post.
 			 */
-			String sql = "SELECT p.id, p.caption, p.image, u.username, u.profile_picture, "
+			String sql = "SELECT p.id, p.caption, p.image, p.created_at, u.username, u.profile_picture, "
 					+ "(SELECT COUNT(*) FROM post_like WHERE post_id = p.id) AS like_count, "
 					+ "(SELECT COUNT(*) FROM post_like WHERE post_id = p.id AND user_id = ?) AS is_liked "
 					+ "FROM post p JOIN user u ON p.user_id = u.id ORDER BY p.id DESC";
@@ -45,7 +45,7 @@ public class HomeService {
 			 */
 			while (rs.next()) {
 				PostModel post = new PostModel(rs.getInt("id"), rs.getString("caption"), rs.getString("image"),
-						rs.getString("username"), rs.getString("profile_picture"));
+						rs.getString("username"), rs.getString("profile_picture"), rs.getTimestamp("created_at"));
 
 				post.setLikeCount(rs.getInt("like_count"));
 				post.setLiked(rs.getInt("is_liked") > 0);

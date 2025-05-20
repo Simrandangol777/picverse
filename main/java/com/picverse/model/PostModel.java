@@ -1,9 +1,14 @@
 package com.picverse.model;
 
+import java.sql.Timestamp;
+import java.time.Duration;
+import java.time.LocalDateTime;
+
 public class PostModel {
 	private int id;
 	private String caption;
 	private String image;
+	private Timestamp createdAt;
 	private int userId;
 	private String username;
 	private String profilePicture;
@@ -28,13 +33,15 @@ public class PostModel {
 		this.image = image;
 	}
 
-	public PostModel(int id, String caption, String image, String username, String profilePicture) {
+	public PostModel(int id, String caption, String image, String username, String profilePicture,
+			Timestamp createdAt) {
 		super();
 		this.id = id;
 		this.caption = caption;
 		this.image = image;
 		this.username = username;
 		this.profilePicture = profilePicture;
+		this.createdAt = createdAt;
 	}
 
 	public PostModel(int id, String caption, String image, String username, String profilePicture, int userId) {
@@ -61,6 +68,14 @@ public class PostModel {
 
 	public void setCaption(String caption) {
 		this.caption = caption;
+	}
+
+	public Timestamp getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Timestamp createdAt) {
+		this.createdAt = createdAt;
 	}
 
 	public String getImage() {
@@ -94,28 +109,46 @@ public class PostModel {
 	public void setProfilePicture(String profilePicture) {
 		this.profilePicture = profilePicture;
 	}
-	
+
 	public int getLikeCount() {
 		return likeCount;
 	}
-	
+
 	public void setLikeCount(int likeCount) {
 		this.likeCount = likeCount;
 	}
-	
+
 	public boolean isLiked() {
 		return isLiked;
 	}
-	
+
 	public void setLiked(boolean isLiked) {
 		this.isLiked = isLiked;
 	}
-	
+
 	public boolean isSaved() {
 		return isSaved;
 	}
-	
+
 	public void setSaved(boolean isSaved) {
 		this.isSaved = isSaved;
+	}
+
+	public String getTimeAgo() {
+		LocalDateTime createdTime = this.createdAt.toLocalDateTime();
+		LocalDateTime now = LocalDateTime.now();
+
+		Duration duration = Duration.between(createdTime, now);
+		long seconds = duration.getSeconds();
+
+		if (seconds < 60)
+			return seconds + " s";
+		if (seconds < 3600)
+			return (seconds / 60) + " min";
+		if (seconds < 86400)
+			return (seconds / 3600) + " hr";
+		if (seconds > 604800)
+			return (seconds / 86400) + " d";
+		return createdTime.toLocalDate().toString();
 	}
 }

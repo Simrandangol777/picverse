@@ -47,10 +47,6 @@
 }
 
 /* Container for username and additional info */
-.home-user-content {
-    display: flex;
-    flex-direction: column;
-}
 
 /* Username text */
 .home-username {
