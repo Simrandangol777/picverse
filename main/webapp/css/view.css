@@ -1,0 +1,336 @@
+@charset "UTF-8";
+
+/* 1 Main Wrapper */
+.view-main {
+    width: 500px;
+    margin: 80px auto 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.view-main * {
+    color: #2f3542;
+}
+
+/* 2 Post Container */
+.view-post {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    transition: box-shadow 0.3s ease;
+}
+
+.view-post:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* 3 Post Header */
+.view-post-header {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    position: relative;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.view-profile-pic {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 14px;
+    border: 1px solid #ddd;
+}
+
+.view-user-content {
+    flex-grow: 1;
+}
+
+.view-username {
+    font-weight: bold;
+    font-size: 1.05rem;
+}
+
+/* 4 Edit/Delete Icons */
+.view-icon {
+    font-size: 18px;
+    color: #555;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.view-icon:hover {
+    color: #007bff;
+}
+
+.edit-icon {
+    position: absolute;
+    right: 50px;
+    top: 18px;
+}
+
+.delete-icon {
+    position: absolute;
+    right: 20px;
+    top: 18px;
+}
+
+/* 5 Caption */
+.view-caption-container {
+    padding: 15px 20px;
+}
+
+.view-caption {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* 6 Post Image */
+.view-post-image {
+    width: 100%;
+    padding: 15px;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.view-post-image img {
+    max-width: 100%;
+    max-height: 600px;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* 7 Like/Comment Icons Styling */
+.view-like {
+    display: flex;
+    justify-content: flex-start; /* Align items to the start */
+    align-items: center;
+    padding: 12px 20px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.view-like i {
+    font-size: 26px;
+    margin-right: 15px;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.view-like i:hover {
+    transform: scale(1.2);
+}
+
+.view-like i:first-child { /* Style the heart icon */
+    color: #555;
+}
+
+.view-like i:first-child:hover {
+    color: red;
+}
+
+.view-like i:last-child { /* Style the comment icon */
+    color: #555;
+}
+
+.view-like i:last-child:hover {
+    color: #0095f6;
+}
+
+/* 8 Comment Input Form */
+.view-comment-section {
+    display: flex;
+    justify-content: center;
+    padding: 15px 20px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.view-comment-section form {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+.view-comment-section input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    font-size: 0.95rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+}
+
+.view-comment-section button {
+    padding: 10px 18px;
+    font-size: 0.95rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.view-comment-section button:hover {
+    background-color: #0056b3;
+}
+
+/* 9 Comments Display */
+.view-comments {
+    padding: 15px 20px;
+    border-top: 1px solid #f0f0f0;
+    margin-bottom: 20px;
+}
+
+.view-comment {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    position: relative;
+}
+
+.view-comment:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.view-comment-profile-pic {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.view-comment-content {
+    flex-grow: 1;
+}
+
+.view-comment-username {
+    font-weight: bold;
+    color: #007bff;
+    text-decoration: none;
+    margin-right: 10px;
+    font-size: 0.95rem;
+}
+
+.view-comment-username:hover {
+    text-decoration: underline;
+}
+
+.view-comment-text {
+    margin-top: 5px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+.btn-delete-comment {
+    background: none;
+    border: none;
+    color: #dc3545;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.btn-delete-comment:hover {
+    opacity: 1;
+}
+
+/* --- Dropdown Styles --- */
+
+/* Dropdown container */
+.view-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown button (three dots) */
+.view-dropdown-toggle {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #555;
+  padding: 5px 10px;
+  user-select: none;
+}
+
+.view-dropdown-toggle:hover {
+  color: #007bff;
+}
+
+/* Dropdown menu */
+.view-dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: #fff;
+  min-width: 150px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  z-index: 1000;
+}
+
+/* Show menu when toggled */
+.view-dropdown.show .view-dropdown-menu {
+  display: block;
+}
+
+/* Dropdown items */
+.view-dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  font-size: 0.95rem;
+  color: #2f3542;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border: none;
+  background: none;
+  width: 100%;
+}
+
+.view-dropdown-item i {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+/* Hover effect for dropdown items */
+.view-dropdown-item:hover {
+  background-color: #f0f0f0;
+}
+
+/* Special styling for delete button */
+.view-delete-btn {
+  color: #dc3545;
+}
+
+.view-delete-btn:hover {
+  background-color: #f8d7da;
+  color: #a71d2a;
+}
