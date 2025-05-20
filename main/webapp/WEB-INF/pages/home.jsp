@@ -17,6 +17,64 @@
 
 	<main class="home-main">
 
+		<c:forEach var="post" items="${posts}">
+			<div class="home-post">
+				<div class="home-post-header">
+					<img
+						src="${pageContext.request.contextPath}/uploads/images/${post.profilePicture}"
+						class="home-profile-pic" />
+
+					<div class="home-user-content">
+						<span class="home-username">${post.username}</span>
+					</div>
+				</div>
+
+				<p style="margin: 10px">${post.caption}</p>
+
+				<div class="home-post-image">
+					<!-- Clicking this will redirect to the view page for this specific post -->
+					<a href="${pageContext.request.contextPath}/view?id=${post.id}">
+						<img
+						src="${pageContext.request.contextPath}/uploads/images/${post.image}"
+						alt="Post Image" />
+					</a>
+				</div>
+
+				<div class="home-post-footer">
+					<div class="home-actions">
+						<!-- Like button -->
+						<form class="home-like-btn" action="likepost" method="post">
+							<input type="hidden" name="postId" value="${post.id}" />
+							<c:choose>
+								<c:when test="${not post.liked}">
+									<button class="home-likes-btn" id="like-count-${post.id}">
+										<i class="fa-regular fa-heart"></i> ${post.likeCount} likes
+									</button>
+								</c:when>
+								<c:when test="${post.liked}">
+									<button class="home-likes-btn" id="like-count-${post.id}">
+										<i class="fa-solid fa-heart liked"></i> ${post.likeCount}
+										likes
+									</button>
+								</c:when>
+							</c:choose>
+
+						</form>
+						<a href="${pageContext.request.contextPath}/view?id=${post.id}"
+							class="home-comment-btn" style="text-decoration: none;">
+							<button class="home-comment-btn">
+								<i class="fa-regular fa-comment"></i>
+							</button>
+						</a>
+					</div>
+				</div>
+			</div>
+			<hr style="width: 100%" />
+			<br>
+		</c:forEach>
+
+
+
 		<!-- This is for the every single post.  -->
 		<div class="home-post">
 			<div class="home-post-header">
@@ -100,7 +158,6 @@
 	</main>
 
 	<%@ include file="footer.jsp"%>
-
 
 
 </body>

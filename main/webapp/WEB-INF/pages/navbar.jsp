@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Picverse</title>
+<link rel="icon" type="image/x-icon"
+    href="${pageContext.request.contextPath}/resources/Images/logomain.png">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/navbar.css" />
 <link rel="stylesheet"
@@ -57,17 +59,32 @@
 			<c:if test="${empty users && param.query != null}">
 				<div class="navbar-results navbar-no-results">No users found</div>
 			</c:if>
+
+
+
 		</div>
+
 
 		<!-- Profile dropdown -->
 		<div class="profile-dropdown">
 			<div class="profile-trigger">
-				<img
-					src="${pageContext.request.contextPath}/resources/Images/lion.jpg"
-					alt="Default User" /> <span> <%
+				<c:choose>
+					<c:when test="${empty sessionScope.profilePicture}">
+						<img
+							src="${pageContext.request.contextPath}/resources/Images/lion.jpg"
+							alt="Default User" />
+					</c:when>
+					<c:otherwise>
+						<img
+							src="${pageContext.request.contextPath}/uploads/images/${sessionScope.profilePicture}"
+							alt="User Image" />
+					</c:otherwise>
+				</c:choose>
+
+				<span> <%
 					 String username = (String) session.getAttribute("username");
 					 out.print((username != null) ? username : "Guest");
-					 %>
+				 %>
 				</span> <i class="fa-solid fa-chevron-down"></i>
 
 			</div>
