@@ -1,0 +1,180 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	background-color: white;
+	display: flex;
+	min-height: 100vh;    /* Ensure body takes at least the full viewport height */
+	overflow-x: auto;     /* Enable horizontal scrolling if content overflows horizontally */
+}
+
+.post-container {
+	flex-grow: 1;
+	margin-left: 250px;
+	padding: 20px;
+	padding-top: 30px;
+}
+
+h1 {
+	color: #333;
+	font-size: 35px;
+	margin-bottom: 20px;
+	font-weight: bold;;
+}
+
+.post-search-bar {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	overflow: hidden;
+	max-width: 500px;
+}
+
+.post-search-bar input {
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px 0 0 5px;
+	flex-grow: 1;
+	font-size: 0.9em;
+}
+
+.post-search-bar button {
+	padding: 10px 15px;
+	background-color: #273F4F;
+	color: white;
+	border: none;
+	border-radius: 0 5px 5px 0;
+	cursor: pointer;
+	font-size: 0.9em;
+	transition: background-color 0.2s ease;
+}
+
+.post-search-bar button:hover{
+	background-color: #1c6ea4;
+}
+
+.posts-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 10px;
+	background-color: #fff;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+	border-radius: 5px;
+	overflow: auto;    /* Enable scrolling for the table if it overflows */
+}
+
+.posts-table th,
+.posts-table td {
+	border: 1px solid #ddd;
+	padding: 10px 12px;
+	text-align: left;
+	font-size: 0.9em;
+	white-space: nowrap;    /* Prevent text wrapping in cells that might cause overflow */
+}
+
+.posts-table th {
+	background-color: #273F4F;
+	font-weight: bold;
+	color: white;
+}
+
+
+.posts-table tbody tr {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.posts-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.action-buttons {
+	white-space: nowrap;
+}
+
+.action-buttons button{
+	background-color: #4a90e2;
+	color: white;
+	border: none;
+	padding: 6px 10px;
+	margin-right: 5px;
+	border-radius: 3px;
+	cursor: pointer;
+	font-size: 0.85em;
+	transition: background-color 0.2s ease;
+}
+
+.action-buttons button:hover {
+	background-color: #357abd;
+}
+
+.action-buttons button.delete {
+	background-color: #e74c3c;
+}
+
+.action-buttons button.delete:hover {
+	background-color: #c0392b;
+}
+
+
+
+/* Popup styles for delete button*/
+
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 300px;
+}
+
+.popup-buttons {
+  margin-top: 15px;
+}
+
+.popup-buttons button {
+  margin: 0 10px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#confirmDelete {
+  background-color: red;
+  color: white;
+}
+
+.popup-buttons button:hover {
+  opacity: 0.9;
+}
+
+
+
+
+
+
