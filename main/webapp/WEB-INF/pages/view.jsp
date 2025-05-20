@@ -61,7 +61,7 @@
 								class="fa-solid fa-pen-to-square"></i> Edit
 							</a>
 							<form action="${pageContext.request.contextPath}/delete"
-								method="post" style="margin: 0;">
+								method="get" style="margin: 0;">
 								<input type="hidden" name="id" value="${post.id}" />
 								<button type="submit" class="view-dropdown-item view-delete-btn"
 									style="border: none; background: none; padding: 8px 15px; width: 100%; text-align: left; cursor: pointer;">
