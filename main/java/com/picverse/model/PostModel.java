@@ -44,11 +44,12 @@ public class PostModel {
 		this.createdAt = createdAt;
 	}
 
-	public PostModel(int id, String caption, String image, String username, String profilePicture, int userId) {
+	public PostModel(int id, String caption, String image, Timestamp createdAt, String username, String profilePicture, int userId) {
 		super();
 		this.id = id;
 		this.caption = caption;
 		this.image = image;
+		this.createdAt = createdAt;
 		this.username = username;
 		this.profilePicture = profilePicture;
 		this.userId = userId;

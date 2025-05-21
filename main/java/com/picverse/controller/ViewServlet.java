@@ -55,7 +55,7 @@ public class ViewServlet extends HttpServlet {
 
 			// Fetch post details from database
 			Connection conn = DatabaseConfig.getDbConnection();
-			String sql = "SELECT p.id, p.caption, p.image, u.username, u.profile_picture, p.user_id "
+			String sql = "SELECT p.id, p.caption, p.image, p.created_at, u.username, u.profile_picture, p.user_id "
 					+ "FROM post p JOIN user u ON p.user_id = u.id " + "WHERE p.id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, postId);
@@ -63,10 +63,9 @@ public class ViewServlet extends HttpServlet {
 
 			if (rs.next()) {
 				post = new PostModel(rs.getInt("id"), rs.getString("caption"), rs.getString("image"),
-						rs.getString("username"), rs.getString("profile_picture"), rs.getInt("user_id"));
+						rs.getTimestamp("created_at"), rs.getString("username"), rs.getString("profile_picture"), rs.getInt("user_id"));
 			}
 
-			
 			request.setAttribute("post", post);
 			request.setAttribute("loggedInUserId", loggedInUserId);
 
@@ -78,7 +77,5 @@ public class ViewServlet extends HttpServlet {
 			e.printStackTrace(); // Log the error
 		}
 	}
-
-	
 
 }
