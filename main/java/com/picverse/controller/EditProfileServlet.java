@@ -23,10 +23,7 @@ import com.picverse.model.UserModel;
 /**
  * Servlet implementation class EditProfileServlet
  */
-@MultipartConfig(fileSizeThreshold = 1024 * 1024,
-		maxFileSize = 1024 * 1024 * 5,
-		maxRequestSize = 1024 * 1024 * 10 
-)
+@MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 10)
 @WebServlet("/edit-profile")
 public class EditProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -41,13 +38,12 @@ public class EditProfileServlet extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 * Fetches user details from the database and forwards to editProfile.jsp
-	 * Checks if the user is logged in by checking the session
-	 * If the user is logged in, fetches user details from the database
-	 * If the user is not logged in, redirects to login page
-	 * Send the user details to the editProfile.jsp page
-	 * @param request the servlet request
+	 *      response) Fetches user details from the database and forwards to
+	 *      editProfile.jsp Checks if the user is logged in by checking the session
+	 *      If the user is logged in, fetches user details from the database If the
+	 *      user is not logged in, redirects to login page Send the user details to
+	 *      the editProfile.jsp page
+	 * @param request  the servlet request
 	 * @param response the servlet response
 	 * 
 	 */
@@ -80,33 +76,34 @@ public class EditProfileServlet extends HttpServlet {
 				String name = rs.getString("name");
 				String username = rs.getString("username");
 				String email = rs.getString("email");
-				String phoneNumber = rs.getString("phone_number");
+				Long phoneNumber = rs.getLong("phone_number");
 				String location = rs.getString("location");
 				String hobby = rs.getString("hobby");
 				String bio = rs.getString("bio");
 				String profilePicture = rs.getString("profile_picture");
-				
+
 				if (profilePicture == null || profilePicture.isEmpty()) {
-	                profilePicture = "logo.png";
-	                System.out.println("profilePicture is empty, setting to logo.png");
-	            } else {
-	                System.out.println("profilePicture: " + profilePicture);
-	            }
+					profilePicture = "logo.png";
+					System.out.println("profilePicture is empty, setting to logo.png");
+				} else {
+					System.out.println("profilePicture: " + profilePicture);
+				}
 
 				// Set user details as request attributes
-				UserModel user = new UserModel(name, username, email, phoneNumber, location, hobby, bio, profilePicture);
+				UserModel user = new UserModel(name, username, email, phoneNumber, location, hobby, bio,
+						profilePicture);
 				request.setAttribute("user", user);
 
 				System.out.println("User details fetched successfully");
 				System.out.println("Name: " + name);
 				System.out.println("Username: " + username);
-				
-				
+
 				System.out.println("Email: " + email);
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			request.getRequestDispatcher("/WEB-INF/pages/error.jsp").forward(request, response);
 		}
 
 		request.getRequestDispatcher("/WEB-INF/pages/editProfile.jsp").forward(request, response);
@@ -115,11 +112,10 @@ public class EditProfileServlet extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 * Handles the form submission for editing user profile
-	 * Checks if the user is logged in by checking the session
-	 * If the user is logged in, updates the user details in the database
-	 * If the user is not logged in, redirects to login page
+	 *      response) Handles the form submission for editing user profile Checks if
+	 *      the user is logged in by checking the session If the user is logged in,
+	 *      updates the user details in the database If the user is not logged in,
+	 *      redirects to login page
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -136,7 +132,15 @@ public class EditProfileServlet extends HttpServlet {
 			String name = request.getParameter("name");
 			String username = request.getParameter("username");
 			String email = request.getParameter("email");
-			String phoneNumber = request.getParameter("phone");
+
+			String phoneNumberStr = request.getParameter("phone");
+			Long phoneNumber = null; // Initialize to null
+
+			// Check if the string is not null and not empty before trying to parse
+			if (phoneNumberStr != null && !phoneNumberStr.trim().isEmpty()) {
+				phoneNumber = Long.parseLong(phoneNumberStr);
+			}
+
 			String location = request.getParameter("location");
 			String hobby = request.getParameter("website");
 			String bio = request.getParameter("bio");
@@ -145,10 +149,6 @@ public class EditProfileServlet extends HttpServlet {
 			System.out.println("username" + username);
 			System.out.println("email" + email);
 			System.out.println("phoneNumber" + phoneNumber);
-			System.out.println("location" + location);
-			System.out.println("hobby" + hobby);
-			System.out.println("bio" + bio);
-
 
 			Part file = request.getPart("profilePicture");
 			String imageName = null;
@@ -181,39 +181,43 @@ public class EditProfileServlet extends HttpServlet {
 
 			try {
 				Connection conn = DatabaseConfig.getDbConnection();
-				String sql = "UPDATE user SET name=?, username=?, email=?, phone_number=?, location=?, hobby=?, bio=?, profile_picture=? WHERE id=?";
+				String sql = "UPDATE user SET name=?, phone_number=?, location=?, hobby=?, bio=?, profile_picture=? WHERE id=?";
 				PreparedStatement stmt = conn.prepareStatement(sql);
 				stmt.setString(1, name);
-				stmt.setString(2, username);
-				stmt.setString(3, email);
-				stmt.setString(4, phoneNumber);
-				stmt.setString(5, location);
-				stmt.setString(6, hobby);
-				stmt.setString(7, bio);
-				stmt.setString(8, imageName);
-				stmt.setInt(9, userId);
+				if (phoneNumber != null) {
+					stmt.setLong(2, phoneNumber);
+				} else {
+					stmt.setNull(2, java.sql.Types.BIGINT);
+				}
+				stmt.setString(3, location);
+				stmt.setString(4, hobby);
+				stmt.setString(5, bio);
+				stmt.setString(6, imageName);
+				stmt.setInt(7, userId);
 
 				int rowsUpdated = stmt.executeUpdate();
+				stmt.close();
+				conn.close();
 				if (rowsUpdated > 0) {
 					System.out.println("User profile updated successfully");
 					response.sendRedirect("edit-profile");
+					return;
 				} else {
 					System.out.println("Failed to update user profile");
 					response.sendRedirect("edit-profile");
+					return;
 				}
-
-				stmt.close();
-				conn.close();
 //				response.sendRedirect("edit-profile");
-				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/pages/editProfile.jsp");
-				rd.forward(request, response);
+//				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/pages/editProfile.jsp");
+//				rd.forward(request, response);
 
 			} catch (Exception e) {
+				request.getRequestDispatcher("/WEB-INF/pages/error.jsp").forward(request, response);
 				e.printStackTrace();
 			}
 		} else {
 			System.out.println("Session is null");
-			response.sendRedirect("login");
+			request.getRequestDispatcher("/WEB-INF/pages/error.jsp").forward(request, response);
 		}
 	}
 

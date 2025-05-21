@@ -8,7 +8,7 @@ public class UserModel {
 	private String name;
 	private String username;
 	private String email;
-	private String phone;
+	private Long phone;
 	private String location;
 	private String hobby;
 	private String bio;
@@ -31,7 +31,7 @@ public class UserModel {
 	}
 
 
-	public UserModel(String name, String username, String email, String phone, String location, String hobby,
+	public UserModel(String name, String username, String email, Long phone, String location, String hobby,
 			String bio, String profilePicture) {
 		this.name = name;
 		this.username = username;
@@ -44,7 +44,7 @@ public class UserModel {
 	}
 
 	// Constructor with fields
-	public UserModel(int id, String name, String username, String email, String phone, String location, String hobby,
+	public UserModel(int id, String name, String username, String email, Long phone, String location, String hobby,
 			String bio, String profilePicture, String password) {
 		this.id = id;
 		this.name = name;
@@ -91,11 +91,11 @@ public class UserModel {
 		this.email = email;
 	}
 
-	public String getPhone() {
+	public Long getPhone() {
 		return phone;
 	}
 
-	public void setPhone(String phone) {
+	public void setPhone(Long phone) {
 		this.phone = phone;
 	}
 

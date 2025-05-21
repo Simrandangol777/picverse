@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Picverse</title>
 <link rel="icon" type="image/x-icon"
-    href="${pageContext.request.contextPath}/resources/Images/logomain.png">
+	href="${pageContext.request.contextPath}/resources/Images/logomain.png">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/navbar.css" />
 <link rel="stylesheet"
@@ -82,19 +82,22 @@
 				</c:choose>
 
 				<span> <%
-					 String username = (String) session.getAttribute("username");
-					 out.print((username != null) ? username : "Guest");
-				 %>
+ String username = (String) session.getAttribute("username");
+ out.print((username != null) ? username : "Guest");
+ %>
 				</span> <i class="fa-solid fa-chevron-down"></i>
 
 			</div>
 			<div class="dropdown-menu">
 				<a href="${pageContext.request.contextPath}/profile"><i
 					class="fa-regular fa-user"></i> Profile</a> <a
-					href="${pageContext.request.contextPath}/settings"><i
-					class="fa-solid fa-gear"></i> Settings</a> <a
-					href="${pageContext.request.contextPath}/logout"><i
-					class="fa-solid fa-right-from-bracket"></i> Logout</a>
+					href="${pageContext.request.contextPath}/edit-profile"><i
+					class="fa-solid fa-gear"></i> Edit Profile</a>
+				<form action="${pageContext.request.contextPath}/logout"
+					method="post">
+					<i class="fa-solid fa-right-from-bracket"></i>
+					<button>Logout</button>
+				</form>
 			</div>
 		</div>
 

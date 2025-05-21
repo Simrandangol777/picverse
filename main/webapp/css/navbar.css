@@ -223,7 +223,7 @@ body {
 	transform: rotate(180deg);
 }
 
-.dropdown-menu a {
+.dropdown-menu a, .dropdown-menu form {
 	display: flex;
 	align-items: center;
 	gap: 10px;
@@ -234,14 +234,24 @@ body {
 	transition: background 0.2s;
 }
 
-.dropdown-menu a:hover {
+.dropdown-menu a:hover, .dropdown-menu form:hover {
 	background-color: #f5f7fa;
 	color: #1e90ff;
 }
 
-.dropdown-menu a i {
+.dropdown-menu a i, .dropdown-menu form i {
 	width: 18px;
 	text-align: center;
+}
+
+.dropdown-menu form button {
+    background: none;
+    border: none;
+    outline: none;
+    color: #2f3542;
+    font-size: 14px;
+    cursor: pointer;
+    transition: color 0.2s;
 }
 
 .dropdown-menu a:not(:last-child) {

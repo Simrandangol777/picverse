@@ -65,7 +65,7 @@
 							name="email" value="${user.email}" class="profiles-input" disabled>
 					</div>
 					<div class="profiles-form-group">
-						<label for="phone">Phone Number</label> <input type="tel"
+						<label for="phone">Phone Number</label> <input type="number"
 							id="phone" name="phone" value="${user.phone}"
 							class="profiles-input">
 					</div>
