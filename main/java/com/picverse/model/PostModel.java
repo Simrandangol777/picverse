@@ -135,6 +135,10 @@ public class PostModel {
 		this.isSaved = isSaved;
 	}
 
+	/*
+	 * This method calculates the time elapsed since the post was created and
+	 * returns it in a human-readable format. It uses the createdAt timestamp to
+	 */
 	public String getTimeAgo() {
 		LocalDateTime createdTime = this.createdAt.toLocalDateTime();
 		LocalDateTime now = LocalDateTime.now();
@@ -148,8 +152,10 @@ public class PostModel {
 			return (seconds / 60) + " min";
 		if (seconds < 86400)
 			return (seconds / 3600) + " hr";
-		if (seconds > 604800)
+		if (seconds < 2592000)
 			return (seconds / 86400) + " d";
+		if (seconds < 31536000)
+			return (seconds / 2592000) + " mon";
 		return createdTime.toLocalDate().toString();
 	}
 }
