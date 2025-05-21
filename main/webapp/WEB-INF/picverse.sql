@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2025 at 12:09 PM
+-- Generation Time: May 21, 2025 at 11:06 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -72,12 +72,10 @@ INSERT INTO `comment` (`id`, `comment`, `post_id`, `user_id`) VALUES
 (37, 'nice camera', 39, 2),
 (38, 'this is good', 39, 1),
 (41, 'wow', 40, 9),
-(43, 'Lovely...❤', 52, 20),
 (44, 'cutie pie...', 51, 20),
 (45, 'Wooow...😘', 50, 17),
 (46, 'Hiii...', 56, 17),
-(47, 'Keep going', 67, 14),
-(48, 'Delicious...💕', 63, 14);
+(47, 'Keep going', 67, 14);
 
 -- --------------------------------------------------------
 
@@ -136,6 +134,7 @@ CREATE TABLE `post` (
   `id` int(10) NOT NULL,
   `caption` varchar(50) NOT NULL,
   `image` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `user_id` int(10) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -143,44 +142,41 @@ CREATE TABLE `post` (
 -- Dumping data for table `post`
 --
 
-INSERT INTO `post` (`id`, `caption`, `image`, `user_id`) VALUES
-(13, 'this is the first caption', 'Screenshot 2025-05-02 112132.png', 1),
-(14, 'This is data 2', 'siberian-husky.jpeg', 1),
-(16, 'This is the iamge', 'cat.jpg', 1),
-(17, 'this is edited again', 'dog.jpg', 1),
-(20, 'this is a test', 'background.avif', 1),
-(21, 'this is caption', 'capital one.png', 1),
-(23, 'Checking ', 'cat.jpg', 1),
-(25, 'The cat is just beautiful', 'cats2.jpg', 1),
-(33, 'cat are beautiful', 'cats2.jpg', 1),
-(36, 'ndnnsnak', 'intro_ball.gif', 1),
-(37, 'this is a picture and', 'main.drawio.png', 1),
-(38, 'This is a good image', 'background3.jpg', 4),
-(39, 'a new post and edited', 'background2.jpg', 1),
-(40, 'this is the second', 'background.avif', 2),
-(46, 'simran', 'download(6).jpg', 10),
-(47, 'What a good day', 'background3.jpg', 1),
-(48, 'Let\'s Light Up the World like Nobody else.', 'Girl.png', 12),
-(49, 'Beautiful Scenary...', 'flower.png', 12),
-(50, 'Beautiful Sketch❤', 'Sketch.jpeg', 14),
-(51, 'Cute girl drawing...😍', 'Drawing1.jpeg', 14),
-(52, 'Trying canvas painting...', 'Canvas Painting.jpeg', 14),
-(53, 'Hero me...\r\n', 'sinchan1.jpeg', 20),
-(54, 'Chilling with friends...', 'Sinchan Friends.jpeg', 20),
-(55, 'My cutie pie...💕😍', 'Siro1.jpeg', 20),
-(56, 'Love❤', 'Sinchan5.jpeg', 20),
-(57, 'Me and my siro...', 'Siro.jpeg', 20),
-(58, 'Mount Fuji...An active volcano.', 'Mt Fuji.jpeg', 17),
-(59, 'Sunshine...', 'Sunshine.jpeg', 17),
-(60, 'Lovely Day...', 'Scenary2.jpeg', 17),
-(61, 'Fitness is in my blood...', 'Fitness.jpeg', 19),
-(62, 'Gymmm', 'Gym.jpeg', 19),
-(63, 'Delicious❤', 'Food1.jpg', 16),
-(64, 'Chinese Cuisine...', 'Food3.jpeg', 16),
-(65, 'Sandwich time..', 'Food5.jpeg', 16),
-(66, 'Cinnamon Roll', 'Cinnamon Roll1.jpeg', 18),
-(67, 'My passion❤', 'Piano.jpeg', 18),
-(68, 'My Obsession...💖', 'Paint.jpeg', 14);
+INSERT INTO `post` (`id`, `caption`, `image`, `created_at`, `user_id`) VALUES
+(13, 'this is the first caption', 'Screenshot 2025-05-02 112132.png', '2025-05-21 05:28:22', 1),
+(14, 'This is data 2', 'siberian-husky.jpeg', '2025-05-21 05:28:22', 1),
+(16, 'This is the iamge', 'cat.jpg', '2025-05-21 05:28:22', 1),
+(17, 'this is edited again', 'dog.jpg', '2025-05-21 05:28:22', 1),
+(20, 'this is a test', 'background.avif', '2025-05-21 05:28:22', 1),
+(21, 'this is caption', 'capital one.png', '2025-05-21 05:28:22', 1),
+(23, 'Checking ', 'cat.jpg', '2025-05-21 05:28:22', 1),
+(25, 'The cat is just beautiful', 'cats2.jpg', '2025-05-21 05:28:22', 1),
+(33, 'cat are beautiful', 'cats2.jpg', '2025-05-21 05:28:22', 1),
+(36, 'ndnnsnak', 'intro_ball.gif', '2025-05-21 05:28:22', 1),
+(37, 'this is a picture and', 'main.drawio.png', '2025-05-21 05:28:22', 1),
+(38, 'This is a good image', 'background3.jpg', '2025-05-21 05:28:22', 4),
+(39, 'a new post and edited', 'background2.jpg', '2025-05-21 05:28:22', 1),
+(40, 'this is the second', 'background.avif', '2025-05-21 05:28:22', 2),
+(46, 'simran', 'download(6).jpg', '2025-05-21 05:28:22', 10),
+(47, 'What a good day', 'background3.jpg', '2025-05-21 05:28:22', 1),
+(48, 'Let\'s Light Up the World like Nobody else.', 'Girl.png', '2025-05-21 05:28:22', 12),
+(49, 'Beautiful Scenary...', 'flower.png', '2025-05-21 05:28:22', 12),
+(50, 'Beautiful Sketch❤', 'Sketch.jpeg', '2025-05-21 05:28:22', 14),
+(51, 'Cute girl drawing...😍', 'Drawing1.jpeg', '2025-05-21 05:28:22', 14),
+(53, 'Hero me...\r\n', 'sinchan1.jpeg', '2025-05-21 05:28:22', 20),
+(54, 'Chilling with friends...', 'Sinchan Friends.jpeg', '2025-05-21 05:28:22', 20),
+(55, 'My cutie pie...💕😍', 'Siro1.jpeg', '2025-05-21 05:28:22', 20),
+(56, 'Love❤', 'Sinchan5.jpeg', '2025-05-21 05:28:22', 20),
+(57, 'Me and my siro...', 'Siro.jpeg', '2025-05-21 05:28:22', 20),
+(58, 'Mount Fuji...An active volcano.', 'Mt Fuji.jpeg', '2025-05-21 05:28:22', 17),
+(59, 'Sunshine...', 'Sunshine.jpeg', '2025-05-21 05:28:22', 17),
+(60, 'Lovely Day...', 'Scenary2.jpeg', '2025-05-21 05:28:22', 17),
+(61, 'Fitness is in my blood...', 'Fitness.jpeg', '2025-05-21 05:28:22', 19),
+(62, 'Gymmm', 'Gym.jpeg', '2025-05-21 05:28:22', 19),
+(64, 'Chinese Cuisine...', 'Food3.jpeg', '2025-05-21 05:28:22', 16),
+(65, 'Sandwich time..', 'Food5.jpeg', '2025-05-21 05:28:22', 16),
+(66, 'Cinnamon Roll', 'Cinnamon Roll1.jpeg', '2025-05-21 05:28:22', 18),
+(67, 'My passion❤', 'Piano.jpeg', '2025-05-21 05:28:22', 18);
 
 -- --------------------------------------------------------
 
@@ -217,7 +213,6 @@ INSERT INTO `post_like` (`id`, `post_id`, `user_id`, `is_liked`) VALUES
 (64, 46, 11, 1),
 (65, 47, 12, 1),
 (66, 48, 12, 1),
-(67, 52, 20, 1),
 (68, 51, 20, 1),
 (69, 50, 20, 1),
 (70, 57, 17, 1),
@@ -225,7 +220,6 @@ INSERT INTO `post_like` (`id`, `post_id`, `user_id`, `is_liked`) VALUES
 (72, 55, 17, 1),
 (73, 54, 17, 1),
 (74, 53, 17, 1),
-(75, 52, 17, 1),
 (76, 51, 17, 1),
 (77, 50, 17, 1),
 (78, 50, 19, 1),
@@ -238,7 +232,6 @@ INSERT INTO `post_like` (`id`, `post_id`, `user_id`, `is_liked`) VALUES
 (85, 56, 19, 1),
 (86, 55, 19, 1),
 (87, 54, 19, 1),
-(88, 52, 19, 1),
 (89, 62, 16, 1),
 (90, 61, 16, 1),
 (91, 60, 16, 1),
@@ -251,10 +244,8 @@ INSERT INTO `post_like` (`id`, `post_id`, `user_id`, `is_liked`) VALUES
 (98, 55, 16, 1),
 (99, 54, 16, 1),
 (100, 53, 16, 1),
-(101, 52, 16, 1),
 (102, 65, 18, 1),
 (103, 64, 18, 1),
-(104, 63, 18, 1),
 (105, 62, 18, 1),
 (106, 61, 18, 1),
 (107, 60, 18, 1),
@@ -265,14 +256,12 @@ INSERT INTO `post_like` (`id`, `post_id`, `user_id`, `is_liked`) VALUES
 (112, 55, 18, 1),
 (113, 54, 18, 1),
 (114, 53, 18, 1),
-(115, 52, 18, 1),
 (116, 51, 18, 1),
 (117, 50, 18, 1),
 (118, 67, 14, 1),
 (119, 66, 14, 1),
 (120, 65, 14, 1),
 (121, 64, 14, 1),
-(122, 63, 14, 1),
 (123, 62, 14, 1),
 (124, 61, 14, 1),
 (125, 60, 14, 1),
@@ -304,8 +293,7 @@ CREATE TABLE `saved_post` (
 INSERT INTO `saved_post` (`id`, `user_id`, `post_id`, `is_saved`) VALUES
 (7, 11, 47, 1),
 (8, 11, 46, 1),
-(9, 12, 39, 1),
-(10, 14, 68, 1);
+(9, 12, 39, 1);
 
 -- --------------------------------------------------------
 
@@ -340,8 +328,7 @@ INSERT INTO `user` (`id`, `name`, `username`, `email`, `phone_number`, `location
 (19, 'Santosh Singh Chad', 'satish9', 'satish@gmail.com', 1111111111, 'Mahendranagar', 'Fitness', 'Let\'s go to gym...', 'Satish.jpeg', 'elYRD3OFM274XEf2cFpsIGfXZUjbfKK5V2RzwmKPZFXLl+OKbJcl9YueomIfHcreNrQ='),
 (20, 'Sinchan Nohara', 'sinchan0', 'sinchan@gmail.com', 1111111111, 'China', 'Chilling', 'I am Sinchan Nohara who is full of fun.', 'Sinchan.jpg', 'gkaT+WcRO/KKHi6lsnHJbQx9Y568BulwrQK2pld4/fR/V0F0WXD0riP/W9MvJNI9RWIk'),
 (21, 'Deepak Bhandari', 'deepak6', 'deepak@gmail.com', NULL, NULL, NULL, NULL, 'logo.png', 'NOdeaJKFusvZ5J4xzSWdMLaoJvNlfVGIc9YcTgSae3YgsxRshm0RoTyG9xPnBRLxt18='),
-(22, 'Kritika Gurung', 'kritika1', 'kritika@gmail.com', NULL, NULL, NULL, NULL, 'logo.png', 'xzBXGW7HVwvAWdYdSdwmeBpoHCGM+2Ao54zec+8WwZKF4IpMqqbywaNgm+QBk2ktzepa'),
-(23, 'Aakriti Chaudhary', 'aakriti37', 'aakriti@gmail.com', NULL, NULL, NULL, NULL, 'logo.png', 'aF/BmfSiRf2fyqUmXABH4nXjlJDXVvwYQJ7gvz+ixpxwBvKYSJzxxVNNmstonOwoY+sR');
+(22, 'Kritika Gurung', 'kritika1', 'kritika@gmail.com', NULL, NULL, NULL, NULL, 'logo.png', 'xzBXGW7HVwvAWdYdSdwmeBpoHCGM+2Ao54zec+8WwZKF4IpMqqbywaNgm+QBk2ktzepa');
 
 --
 -- Indexes for dumped tables
@@ -406,7 +393,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `contact`
@@ -430,7 +417,7 @@ ALTER TABLE `post`
 -- AUTO_INCREMENT for table `post_like`
 --
 ALTER TABLE `post_like`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
 
 --
 -- AUTO_INCREMENT for table `saved_post`
