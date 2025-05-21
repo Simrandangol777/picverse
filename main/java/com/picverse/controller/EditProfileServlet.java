@@ -23,9 +23,9 @@ import com.picverse.model.UserModel;
 /**
  * Servlet implementation class EditProfileServlet
  */
-@MultipartConfig(fileSizeThreshold = 1024 * 1024, // 1MB
-		maxFileSize = 1024 * 1024 * 5, // 5MB
-		maxRequestSize = 1024 * 1024 * 10 // 10MB
+@MultipartConfig(fileSizeThreshold = 1024 * 1024,
+		maxFileSize = 1024 * 1024 * 5,
+		maxRequestSize = 1024 * 1024 * 10 
 )
 @WebServlet("/edit-profile")
 public class EditProfileServlet extends HttpServlet {
@@ -42,6 +42,14 @@ public class EditProfileServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
+	 * Fetches user details from the database and forwards to editProfile.jsp
+	 * Checks if the user is logged in by checking the session
+	 * If the user is logged in, fetches user details from the database
+	 * If the user is not logged in, redirects to login page
+	 * Send the user details to the editProfile.jsp page
+	 * @param request the servlet request
+	 * @param response the servlet response
+	 * 
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -108,6 +116,10 @@ public class EditProfileServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
+	 * Handles the form submission for editing user profile
+	 * Checks if the user is logged in by checking the session
+	 * If the user is logged in, updates the user details in the database
+	 * If the user is not logged in, redirects to login page
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

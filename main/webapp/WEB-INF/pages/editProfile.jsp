@@ -55,14 +55,14 @@
 					<div class="profiles-form-group">
 						<label for="username">Username</label> <input type="text"
 							id="username" name="username" value="${user.username}"
-							class="profiles-input">
+							class="profiles-input" disabled>
 					</div>
 				</div>
 
 				<div class="profiles-form-row">
 					<div class="profiles-form-group">
 						<label for="email">Email</label> <input type="email" id="email"
-							name="email" value="${user.email}" class="profiles-input">
+							name="email" value="${user.email}" class="profiles-input" disabled>
 					</div>
 					<div class="profiles-form-group">
 						<label for="phone">Phone Number</label> <input type="tel"

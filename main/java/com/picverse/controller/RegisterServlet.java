@@ -36,14 +36,21 @@ public class RegisterServlet extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/pages/register.jsp").forward(request, response);
 	}
 	
+	
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * This method handles the registration of a new user.
+	 * It validates the input data, encrypts the password, and stores the user information in the database.
+	 * If the registration is successful, it redirects to the login page with a success message.
+	 * If there is an error, it forwards the request back to the registration page with an error message.
+	 * 
+	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String validationMessage = validateRegistrationForm(req);
 		
+		// Debugging output
 		System.out.println("name: " + req.getParameter("name"));
-		System.out.println("username: " + req.getParameter("username"));
-		System.out.println("email: " + req.getParameter("email"));
-		System.out.println("password: " + req.getParameter("password"));
 		System.out.println("RegisterServlet: " + validationMessage);
 
 
@@ -76,7 +83,15 @@ public class RegisterServlet extends HttpServlet {
 	    }
 	}
 	
-
+	
+	/**
+	 * This method validates the registration form data.
+	 * It checks if the name, username, email, and password fields are not empty,
+	 * and if they meet the required format.
+	 * 
+	 * @param req HttpServletRequest object containing the request data
+	 * @return String error message if validation fails, null if validation is successful
+	 */
 	private String validateRegistrationForm(HttpServletRequest req) {
 		String name = req.getParameter("name");
 		String username = req.getParameter("username");	
@@ -103,12 +118,30 @@ public class RegisterServlet extends HttpServlet {
 		return null;
 	}
 
+	/**
+	 * This method handles the success response after successful registration.
+	 * It sets a success message and forwards the request to the specified page.
+	 * 
+	 * @param req HttpServletRequest object containing the request data
+	 * @param resp HttpServletResponse object for sending the response
+	 * @param message Success message to be displayed
+	 * @param redirectPage Page to redirect to after successful registration
+	 */
 	private void handleSuccess(HttpServletRequest req, HttpServletResponse resp, String message, String redirectPage)
 			throws ServletException, IOException {
 		req.setAttribute("success", message);
 		req.getRequestDispatcher(redirectPage).forward(req, resp);
 	}
 
+	
+	/**
+	 * This method handles the error response in case of registration failure.
+	 * It sets an error message and forwards the request back to the registration page.
+	 * 
+	 * @param req HttpServletRequest object containing the request data
+	 * @param resp HttpServletResponse object for sending the response
+	 * @param message Error message to be displayed
+	 */
 	private void handleError(HttpServletRequest req, HttpServletResponse resp, String message)
 			throws ServletException, IOException {
 		req.setAttribute("error", message);
