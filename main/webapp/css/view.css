@@ -115,7 +115,7 @@
 /* 7 Like/Comment Icons Styling */
 .view-like {
     display: flex;
-    justify-content: flex-start; /* Align items to the start */
+    justify-content: space-evenly; /* Align items to the start */
     align-items: center;
     padding: 12px 20px;
     border-top: 1px solid #f0f0f0;
