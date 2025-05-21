@@ -112,6 +112,28 @@ public class ProfileServlet extends HttpServlet {
 			request.setAttribute("isFollowing", isFollowing);
 			request.setAttribute("profileUserId", userIdToFetch);
 
+			// Follower Count
+			String followerCountSql = "SELECT COUNT(*) AS count FROM follow WHERE following_id = ?";
+			PreparedStatement followerStmt = conn.prepareStatement(followerCountSql);
+			followerStmt.setInt(1, userIdToFetch);
+			ResultSet followerRs = followerStmt.executeQuery();
+			int followerCount = 0;
+			if (followerRs.next()) {
+				followerCount = followerRs.getInt("count");
+			}
+			request.setAttribute("followerCount", followerCount);
+
+			// Following Count
+			String followingCountSql = "SELECT COUNT(*) AS count FROM follow WHERE follower_id = ?";
+			PreparedStatement followingStmt = conn.prepareStatement(followingCountSql);
+			followingStmt.setInt(1, userIdToFetch);
+			ResultSet followingRs = followingStmt.executeQuery();
+			int followingCount = 0;
+			if (followingRs.next()) {
+				followingCount = followingRs.getInt("count");
+			}
+			request.setAttribute("followingCount", followingCount);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -26,6 +26,7 @@
 					alt="${post.username}'s Profile Picture" class="view-profile-pic" />
 				<div class="view-user-content">
 					<span class="view-username">${post.username}</span>
+					<p>${post.timeAgo}</p>
 				</div>
 
 				<div class="view-dropdown">

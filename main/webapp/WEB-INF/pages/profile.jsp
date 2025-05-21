@@ -74,11 +74,11 @@
 					class="profile-stat-label">Posts</span>
 			</div>
 			<div class="profile-stat-item">
-				<span class="profile-stat-count">348</span> <span
+				<span class="profile-stat-count">${followerCount}</span> <span
 					class="profile-stat-label">Followers</span>
 			</div>
 			<div class="profile-stat-item">
-				<span class="profile-stat-count">215</span> <span
+				<span class="profile-stat-count">${followingCount}</span> <span
 					class="profile-stat-label">Following</span>
 			</div>
 		</div>
