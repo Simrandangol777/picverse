@@ -18,17 +18,20 @@
 		<div class="friends-column">
 			<h2>Following</h2>
 			<c:forEach var="user" items="${followingList}">
-				<div class="friends-card">
-					<img
-						src="${pageContext.request.contextPath}/uploads/images/${user.profilePicture}"
-						class="friends-profile-pic" />
-					<div class="friends-info">
-						<span class="friends-username">${user.username}</span> <span
-							class="friends-status">You follow</span>
+				<c:if test="${user.username != 'admin'}">
+					<div class="friends-card">
+						<img
+							src="${pageContext.request.contextPath}/uploads/images/${user.profilePicture}"
+							class="friends-profile-pic" />
+						<div class="friends-info">
+							<span class="friends-username">${user.username}</span> <span
+								class="friends-status">You follow</span>
+						</div>
+						<a
+							href="${pageContext.request.contextPath}/profile?username=${user.username}"
+							class="friends-link">View Profile</a>
 					</div>
-					<a href="${pageContext.request.contextPath}/profile?username=${user.username}" class="friends-link">View
-						Profile</a>
-				</div>
+				</c:if>
 			</c:forEach>
 			<c:if test="${empty followingList}">
 				<p>You are not following anyone yet.</p>
@@ -39,17 +42,20 @@
 		<div class="friends-column">
 			<h2>Followers</h2>
 			<c:forEach var="user" items="${followersList}">
-				<div class="friends-card">
-					<img
-						src="${pageContext.request.contextPath}/uploads/images/${user.profilePicture}"
-						class="friends-profile-pic" />
-					<div class="friends-info">
-						<span class="friends-username">${user.username}</span> <span
-							class="friends-status">Follows you</span>
+				<c:if test="${user.username != 'admin'}">
+					<div class="friends-card">
+						<img
+							src="${pageContext.request.contextPath}/uploads/images/${user.profilePicture}"
+							class="friends-profile-pic" />
+						<div class="friends-info">
+							<span class="friends-username">${user.username}</span> <span
+								class="friends-status">Follows you</span>
+						</div>
+						<a
+							href="${pageContext.request.contextPath}/profile?username=${user.username}"
+							class="friends-link">View Profile</a>
 					</div>
-					<a href="${pageContext.request.contextPath}/profile?username=${user.username}" class="friends-link">View
-						Profile</a>
-				</div>
+				</c:if>
 			</c:forEach>
 			<c:if test="${empty followersList}">
 				<p>No one is following you yet.</p>
@@ -61,17 +67,20 @@
 			<h2>Suggestions</h2>
 
 			<c:forEach var="user" items="${suggestedUsers}">
-				<div class="friends-card">
-					<img
-						src="${pageContext.request.contextPath}/uploads/images/${user.profilePicture}"
-						class="friends-profile-pic" />
-					<div class="friends-info">
-						<span class="friends-username">${user.username}</span> <span
-							class="friends-status">Suggested for you</span>
+				<c:if test="${user.username != 'admin'}">
+					<div class="friends-card">
+						<img
+							src="${pageContext.request.contextPath}/uploads/images/${user.profilePicture}"
+							class="friends-profile-pic" />
+						<div class="friends-info">
+							<span class="friends-username">${user.username}</span> <span
+								class="friends-status">Suggested for you</span>
+						</div>
+						<a
+							href="${pageContext.request.contextPath}/profile?username=${user.username}"
+							class="friends-link">View Profile</a>
 					</div>
-					<a href="${pageContext.request.contextPath}/profile?username=${user.username}" class="friends-link">View
-						Profile</a>
-				</div>
+				</c:if>
 			</c:forEach>
 
 			<c:if test="${empty suggestedUsers}">

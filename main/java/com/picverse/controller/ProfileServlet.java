@@ -43,6 +43,28 @@ public class ProfileServlet extends HttpServlet {
 			response.sendRedirect("login");
 			return;
 		}
+		
+		try {
+			String targetUsername = request.getParameter("username");
+			Connection conn = DatabaseConfig.getDbConnection();
+			String sql = "SELECT username FROM user WHERE username = ?";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, targetUsername);
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				String username = rs.getString("username");
+			
+				if ("admin".equalsIgnoreCase(username)) {
+					request.getRequestDispatcher("WEB-INF/pages/error.jsp").forward(request, response);
+					return;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.getRequestDispatcher("WEB-INF/pages/error.jsp").forward(request, response);
+			return;
+		}
 
 		try (Connection conn = DatabaseConfig.getDbConnection()) {
 			int loggedInUserId = (int) session.getAttribute("userId");
