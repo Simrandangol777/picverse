@@ -13,8 +13,23 @@
 </head>
 <body>
 	<div class="container">
-		<h1>
+		<h2>
 			<b>About Us</b>
+		</h2>
+		
+			<h2>
+				<b>Picverse</b>
+			</h2>
+				<p class="short-info">
+				Picverse is a web application designed for sharing images and posts, similar to a social media platform. 
+				Users can create an account, upload and view images, write captions, and interact with other users' content. 
+				The app typically features user profiles, post creation, and basic error handling for actions like deleting posts. 
+				It's often built using technologies like JSP, Servlets, HTML, CSS, and a backend database to manage users and posts.
+				</p>
+				
+		
+		<h1>
+			<b>Members</b>
 		</h1>
 
 		<div class="team-member layout-1">
