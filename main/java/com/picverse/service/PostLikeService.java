@@ -1,5 +1,5 @@
 package com.picverse.service;
 
-public class EditProfileService {
+public class PostLikeService {
 
 }

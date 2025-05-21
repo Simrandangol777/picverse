@@ -45,23 +45,18 @@
 				<div class="home-post-footer">
 					<div class="home-actions">
 						<!-- Like button -->
-						<form class="home-like-btn" action="likepost" method="post">
-							<input type="hidden" name="postId" value="${post.id}" />
-							<c:choose>
-								<c:when test="${not post.liked}">
-									<button class="home-likes-btn" id="like-count-${post.id}">
-										<i class="fa-regular fa-heart"></i> ${post.likeCount} likes
-									</button>
-								</c:when>
-								<c:when test="${post.liked}">
-									<button class="home-likes-btn" id="like-count-${post.id}">
-										<i class="fa-solid fa-heart liked"></i> ${post.likeCount}
-										likes
-									</button>
-								</c:when>
-							</c:choose>
 
-						</form>
+						<div class="home-like-btn">
+							<input type="hidden" name="postId" value="${post.id}" />
+							<button class="home-likes-btn" id="like-btn-${post.id}"
+								data-post-id="${post.id}" data-liked="${post.liked}">
+								<i
+									class="${post.liked ? 'fa-solid fa-heart liked' : 'fa-regular fa-heart'}"></i>
+								<span class="like-count">${post.likeCount}</span> likes
+							</button>
+
+						</div>
+
 						<a href="${pageContext.request.contextPath}/view?id=${post.id}"
 							class="home-comment-btn" style="text-decoration: none;">
 							<button class="home-comment-btn">
@@ -160,6 +155,50 @@
 	</main>
 
 	<%@ include file="footer.jsp"%>
+
+	<!-- Include axios -->
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+	<script>
+	    // This is for the like button
+		document.addEventListener("DOMContentLoaded", function() {
+            // Add event listeners to all like buttons
+		    document.querySelectorAll('.home-likes-btn').forEach(function(btn) {
+                // Add click event listener to each button
+		        btn.addEventListener('click', function(e) {
+		            e.preventDefault();
+		
+		            const postId = btn.getAttribute('data-post-id');
+		            // Check if the post is already liked
+		            const liked = btn.getAttribute('data-liked') === 'true';
+		
+		            axios.post('${pageContext.request.contextPath}/likepost', 'postId=' + postId)
+		                .then(function(response) {
+		                    // Toggle heart icon and like count
+		                    let icon = btn.querySelector('i');
+		                    let countSpan = btn.querySelector('.like-count');
+		                    let count = parseInt(countSpan.textContent);
+		
+		                    // Update the like status
+		                    if (liked) {
+		                        icon.className = 'fa-regular fa-heart';
+		                        btn.setAttribute('data-liked', 'false');
+		                        countSpan.textContent = count - 1;
+		                    } else {
+		                        icon.className = 'fa-solid fa-heart liked';
+		                        btn.setAttribute('data-liked', 'true');
+		                        countSpan.textContent = count + 1;
+		                    }
+		                })
+		                .catch(function(error) {
+		                    alert("Error liking post. Please try again.");
+		            });
+		        });
+		    });
+		});
+	</script>
+
+
 
 
 </body>

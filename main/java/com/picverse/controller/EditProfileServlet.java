@@ -1,6 +1,5 @@
 package com.picverse.controller;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -24,7 +23,7 @@ import com.picverse.model.UserModel;
  * Servlet implementation class EditProfileServlet
  */
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 10)
-@WebServlet("/edit-profile")
+@WebServlet(asyncSupported = true, urlPatterns = { "/edit-profile" })
 public class EditProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -160,6 +159,12 @@ public class EditProfileServlet extends HttpServlet {
 				imageName = file.getSubmittedFileName();
 				System.out.println("New file name: " + imageName);
 
+				/*
+				 * Save the uploaded file to the server
+				 * The path is relative to the web application context
+				 * The file will be saved in the "uploads/images/" directory
+				 * 
+				 */
 				String uploadPath = getServletContext().getRealPath("uploads/images/") + imageName;
 				System.out.println("Upload path: " + uploadPath);
 
@@ -180,13 +185,21 @@ public class EditProfileServlet extends HttpServlet {
 			}
 
 			try {
+				/*
+				 * Update user details in the database
+				 * 
+				 */
 				Connection conn = DatabaseConfig.getDbConnection();
 				String sql = "UPDATE user SET name=?, phone_number=?, location=?, hobby=?, bio=?, profile_picture=? WHERE id=?";
 				PreparedStatement stmt = conn.prepareStatement(sql);
 				stmt.setString(1, name);
+				
+				// Check if phoneNumber is null or empty before setting it
+				// If it's null, set it to SQL NULL
 				if (phoneNumber != null) {
 					stmt.setLong(2, phoneNumber);
 				} else {
+					// Set to SQL NULL if phoneNumber is null
 					stmt.setNull(2, java.sql.Types.BIGINT);
 				}
 				stmt.setString(3, location);
