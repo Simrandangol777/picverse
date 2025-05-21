@@ -67,7 +67,7 @@
 					</div>
 					
 					<div class="action-card">
-						<a href="${pageContext.request.contextPath}/dashboard"><i
+						<a href="${pageContext.request.contextPath}/admin"><i
 							class="fa-solid fa-chart-line fa-2x"></i> <span>View
 								Analytics</span></a>
 					</div>

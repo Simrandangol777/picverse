@@ -41,7 +41,7 @@
 			<div class="user-info">
 				<a href="${pageContext.request.contextPath}/admin-profile">
 					<i class="fa fa-user-circle" style="font-size: 30px; color: white;"></i>
-					<div>Admin Profile</div>
+					<div>Admin</div>
 					
 				</a>
 			</div>
