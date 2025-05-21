@@ -38,7 +38,27 @@ public class DeleteServlet extends HttpServlet {
 		try {
 			Connection conn = DatabaseConfig.getDbConnection();
 
+			// Delete comments first
+			String deleteCommentsSql = "DELETE FROM comment WHERE post_id=?";
+			PreparedStatement deleteCommentsStmt = conn.prepareStatement(deleteCommentsSql);
+			deleteCommentsStmt.setInt(1, id);
+			deleteCommentsStmt.executeUpdate();
+			deleteCommentsStmt.close();
+			
+			// Delete saved posts related to this post
+			String deleteSavedPostsSql = "DELETE FROM saved_post WHERE post_id=?";
+			PreparedStatement deleteSavedPostsStmt = conn.prepareStatement(deleteSavedPostsSql);
+			deleteSavedPostsStmt.setInt(1, id);
+			deleteSavedPostsStmt.executeUpdate();
 
+			// Delete post_likes related to this post
+			String deleteLikesSql = "DELETE FROM post_like WHERE post_id=?";
+			PreparedStatement deleteLikesStmt = conn.prepareStatement(deleteLikesSql);
+			deleteLikesStmt.setInt(1, id);
+			deleteLikesStmt.executeUpdate();
+			deleteLikesStmt.close();
+
+			// Now delete post
 			String deletePostSql = "DELETE FROM post WHERE id=?";
 			PreparedStatement deletePostStmt = conn.prepareStatement(deletePostSql);
 			deletePostStmt.setInt(1, id);
@@ -49,7 +69,7 @@ public class DeleteServlet extends HttpServlet {
 
 			response.sendRedirect("home");
 		} catch (Exception e) {
-			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/error.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/pages/error.jsp");
 			rd.forward(request, response);
 			e.printStackTrace();
 		}
