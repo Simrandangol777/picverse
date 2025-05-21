@@ -8,8 +8,10 @@
 
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/admin/profile.css">
+	
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/admin/adminSidebar.css">
+	
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 	integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
@@ -25,25 +27,26 @@
 		<main class="main-content">
 			<header class="main-header">
 				<h1>Admin Profile</h1>
-				<div class="search-bar">
-					<input type="text" placeholder="Search...">
-				</div>
 			</header>
+			
 			<section class="profile-section">
 				<div class="profile-details-card">
 					<div class="profile-image">
 						<i class="fa-solid fa-user-circle fa-5x"></i>
 					</div>
+					
 					<div class="profile-info">
-						<h2>Aakriti Chaudhary</h2>
-						<p>
-							<i class="fa-solid fa-envelope" style="color: white;"></i>
-							aakriti.chaudhary@example.com
-						</p>
+						 <h2>Admin Name</h2>
+	                   	 <p>
+	                     	<i class="fa-solid fa-envelope" style="color: white;"></i>
+	                     	admin@gmail.com
+	                     </p>
+						
 						<p>
 							<i class="fa-solid fa-briefcase" style="color: white;"></i>
 							Administrator
 						</p>
+						
 						<p>
 							<i class="fa-solid fa-calendar-alt" style="color: white;"></i>
 							Member Since: January 15, 2023
@@ -57,19 +60,23 @@
 							class="fa-solid fa-users-cog fa-2x"></i> <span>Manage
 								Users</span></a>
 					</div>
+					
 					<div class="action-card">
 						<a href="${pageContext.request.contextPath}/admin-postmanagement"><i
 							class="fa-solid fa-file-alt fa-2x"></i> <span>Manage Posts</span></a>
 					</div>
+					
 					<div class="action-card">
 						<a href="${pageContext.request.contextPath}/dashboard"><i
 							class="fa-solid fa-chart-line fa-2x"></i> <span>View
 								Analytics</span></a>
 					</div>
+					
 					<div class="action-card">
 						<a href="#" id="settingsLink"><i class="fa-solid fa-cog fa-2x"></i>
 							<span>Settings</span></a>
 					</div>
+					
 					<div class="action-card logout-card">
 						<form class="logout-form"
 							action="${pageContext.request.contextPath}/logout" method="post">
@@ -91,7 +98,7 @@
 			<span class="close-button">&times;</span>
 			<h3>Settings</h3>
 			<ul>
-				<li><a href="${pageContext.request.contextPath}/edit-admin-profile">Edit Profile</a></li>
+				<li><a href="#">Edit Profile</a></li>
 				<li><a href="#">Manage Account</a></li>
 				<li><a href="#">Notifications</a></li>
 				<li><a href="#">Privacy</a></li>
@@ -118,9 +125,6 @@
                 settingsPopup.style.display = "block";
             } 
         });
-        
-        
-     	
         
     </script>
 

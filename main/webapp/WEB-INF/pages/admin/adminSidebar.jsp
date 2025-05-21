@@ -10,6 +10,8 @@
 		<li><a href="${pageContext.request.contextPath}/admin-report"><i class="fa fa-file-alt"></i>Reports</a></li>
 		<li><a href="${pageContext.request.contextPath}/admin-message"><i class="fa-solid fa-message"></i>Message</a></li>
 		
+		<li><a href="${pageContext.request.contextPath}/admin-profile"><i class="fa fa-user"></i>Admin Profile</a></li>
+		
 		<li style="padding: 0;">
 		    <form action="${pageContext.request.contextPath}/logout" method="post" style="width: 100%;">
 		        <button type="submit" class="sidebar-button">
