@@ -110,7 +110,10 @@ public class ViewServlet extends HttpServlet {
 			rd.forward(request, response);
 
 		} catch (Exception e) {
+			
 			e.printStackTrace(); // Log the error
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/pages/error.jsp");
+			rd.forward(request, response);
 		}
 	}
 
@@ -147,11 +150,13 @@ public class ViewServlet extends HttpServlet {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("Error inserting comment: " + e.getMessage());
-			response.sendRedirect(request.getContextPath() + "/view?id=" + postId);
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/pages/error.jsp");
+			rd.forward(request, response);
 		} catch (ClassNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/pages/error.jsp");
+			rd.forward(request, response);
 		}
 	}
 

@@ -1,65 +1,68 @@
 package com.picverse.controller;
 
-import com.picverse.service.DeleteService;
-
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import com.picverse.config.DatabaseConfig;
 
 /**
- * Servlet responsible for handling deletion of posts.
- * Maps to /delete endpoint and delegates logic to DeleteService.
+ * Servlet implementation class DeleteServlet
  */
 @WebServlet("/delete")
 public class DeleteServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    private DeleteService deleteService;
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public DeleteServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-    /**
-     * Initializes the DeleteService when the servlet starts.
-     */
-    @Override
-    public void init() throws ServletException {
-        deleteService = new DeleteService();
-    }
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		int id = Integer.parseInt(request.getParameter("id"));
 
-    /**
-     * Handles the POST request to delete a post based on its ID.
-     *
-     * @param request  HttpServletRequest containing post ID to delete.
-     * @param response HttpServletResponse to redirect or show error.
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-        try {
-            // Parse post ID from the request
-            int postId = Integer.parseInt(request.getParameter("id"));
+		try {
+			Connection conn = DatabaseConfig.getDbConnection();
 
-            // Delegate deletion to the service class
-            boolean isDeleted = deleteService.deletePostById(postId);
 
-            if (isDeleted) {
-                // Redirect to home page on success
-                response.sendRedirect("home");
-            } else {
-                // Inform client if deletion failed
-                response.getWriter().write("Post could not be deleted.");
-            }
+			String deletePostSql = "DELETE FROM post WHERE id=?";
+			PreparedStatement deletePostStmt = conn.prepareStatement(deletePostSql);
+			deletePostStmt.setInt(1, id);
+			deletePostStmt.executeUpdate();
+			deletePostStmt.close();
 
-        } catch (NumberFormatException e) {
-            // Handle invalid or missing post ID
-            response.getWriter().write("Invalid post ID format.");
-        } catch (Exception e) {
-            // General exception logging
-            e.printStackTrace();
-            response.getWriter().write("Error deleting post: " + e.getMessage());
-        }
-    }
+			conn.close();
+
+			response.sendRedirect("home");
+		} catch (Exception e) {
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/error.jsp");
+			rd.forward(request, response);
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
 }
