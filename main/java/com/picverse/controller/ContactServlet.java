@@ -28,28 +28,27 @@ public class ContactServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String name = request.getParameter("name");
-        Long phoneNumber = Long.parseLong(request.getParameter("phone"));
-        String email = request.getParameter("email");
-        String subject = request.getParameter("subject");
-        String message = request.getParameter("message");
-
-        ContactModel contact = new ContactModel();
-        contact.setName(name);
-        contact.setPhoneNumber(phoneNumber);
-        contact.setEmail(email);
-        contact.setSubject(subject);
-        contact.setMessage(message);
-
-        ContactService service = new ContactService();
-
         try {
+        	String name = request.getParameter("name");
+            Long phoneNumber = Long.parseLong(request.getParameter("phone"));
+            String email = request.getParameter("email");
+            String subject = request.getParameter("subject");
+            String message = request.getParameter("message");
+
+            ContactModel contact = new ContactModel();
+            contact.setName(name);
+            contact.setPhoneNumber(phoneNumber);
+            contact.setEmail(email);
+            contact.setSubject(subject);
+            contact.setMessage(message);
+
+            ContactService service = new ContactService();
             service.saveContact(contact);
             System.out.println("Contact information saved successfully.");
             response.sendRedirect("contact");
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException | NumberFormatException e) {
             e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error saving contact information.");
+            request.getRequestDispatcher("WEB-INF/pages/error.jsp").forward(request, response);
         }
     }
 }
