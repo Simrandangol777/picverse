@@ -50,7 +50,8 @@ public class FollowServlet extends HttpServlet {
 		ArrayList<UserModel> following = new ArrayList<>();
 		ArrayList<UserModel> suggestions = new ArrayList<>();
 
-		try (Connection conn = DatabaseConfig.getDbConnection()) {
+		try {
+			Connection conn = DatabaseConfig.getDbConnection();
 			// Get FOLLOWING
 			String sql1 = "SELECT u.id, u.username, u.profile_picture FROM user u INNER JOIN follow f ON u.id = f.following_id WHERE f.follower_id = ?";
 			try (PreparedStatement stmt = conn.prepareStatement(sql1)) {
@@ -73,7 +74,7 @@ public class FollowServlet extends HttpServlet {
 				}
 			}
 
-			// 🔽 Get SUGGESTED USERS
+			// Get SUGGESTED USERS
 			String sql3 = "SELECT id, username, profile_picture FROM user " + "WHERE id != ? "
 					+ "AND id NOT IN (SELECT following_id FROM follow WHERE follower_id = ?) "
 					+ "AND id NOT IN (SELECT follower_id FROM follow WHERE following_id = ?) " + "LIMIT 20";
@@ -88,13 +89,18 @@ public class FollowServlet extends HttpServlet {
 				}
 			}
 
-		} catch (SQLException | ClassNotFoundException e) {
+		} catch (SQLException e) {
+			e.printStackTrace();
+			response.sendRedirect("error");
+			return;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		request.setAttribute("followingList", following);
 		request.setAttribute("followersList", followers);
-		request.setAttribute("suggestedUsers", suggestions); 
+		request.setAttribute("suggestedUsers", suggestions);
 		request.getRequestDispatcher("WEB-INF/pages/friends.jsp").forward(request, response);
 	}
 
