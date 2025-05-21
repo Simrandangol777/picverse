@@ -38,7 +38,7 @@ public class DeleteServlet extends HttpServlet {
 		try {
 			Connection conn = DatabaseConfig.getDbConnection();
 
-			// Delete comments first
+			// Delete comments
 			String deleteCommentsSql = "DELETE FROM comment WHERE post_id=?";
 			PreparedStatement deleteCommentsStmt = conn.prepareStatement(deleteCommentsSql);
 			deleteCommentsStmt.setInt(1, id);
