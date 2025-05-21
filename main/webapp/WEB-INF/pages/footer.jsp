@@ -19,24 +19,30 @@
 
 		<div class="friend-list">
 			<c:choose>
-				<%-- User logged in? --%>
 				<c:when test="${not empty sessionScope.userId}">
-					<c:forEach var="friend" items="${followingList}">
-						<a
-							href="${pageContext.request.contextPath}/profile?username=${friend.username}"
-							class="friend-link"
-							style="text-decoration: none; color: inherit;">
+					<c:choose>
+						<c:when test="${not empty followingList}">
+							<c:forEach var="friend" items="${followingList}">
+								<a
+									href="${pageContext.request.contextPath}/profile?username=${friend.username}"
+									class="friend-link"
+									style="text-decoration: none; color: inherit;">
+									<div class="friend">
+										<img class="friend-img"
+											src="${pageContext.request.contextPath}/uploads/images/${friend.profilePicture}"
+											alt="${friend.username}" />
+										<h3>${friend.username}</h3>
+									</div>
+								</a>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
 							<div class="friend">
-								<img class="friend-img"
-									src="${pageContext.request.contextPath}/uploads/images/${friend.profilePicture}"
-									alt="${friend.username}" />
-								<h3>${friend.username}</h3>
+								<h3>No Friends</h3>
 							</div>
-						</a>
-
-					</c:forEach>
+						</c:otherwise>
+					</c:choose>
 				</c:when>
-				<%-- User not logged in, show default friend --%>
 				<c:otherwise>
 					<div class="friend">
 						<h3>No Friends</h3>
