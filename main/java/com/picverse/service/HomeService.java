@@ -3,10 +3,12 @@ package com.picverse.service;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.picverse.config.DatabaseConfig;
 import com.picverse.model.PostModel;
+import com.picverse.model.UserModel;
 
 public class HomeService {
 
@@ -62,5 +64,24 @@ public class HomeService {
 		}
 
 		return posts;
+	}
+
+	public ArrayList<UserModel> getFollowingUsers(int userId) throws SQLException, ClassNotFoundException {
+		ArrayList<UserModel> following = new ArrayList<>();
+
+		String sql = "SELECT u.id, u.username, u.profile_picture FROM user u "
+				+ "INNER JOIN follow f ON u.id = f.following_id WHERE f.follower_id = ? LIMIT 6";
+
+		try (Connection conn = DatabaseConfig.getDbConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+			stmt.setInt(1, userId);
+			try (ResultSet rs = stmt.executeQuery()) {
+				while (rs.next()) {
+					following.add(
+							new UserModel(rs.getInt("id"), rs.getString("username"), rs.getString("profile_picture")));
+				}
+			}
+		}
+		return following;
 	}
 }
