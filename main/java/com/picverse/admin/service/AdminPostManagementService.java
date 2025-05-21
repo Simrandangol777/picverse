@@ -62,10 +62,10 @@ public class AdminPostManagementService {
 				deletePostStmt.setInt(1, id);
 				int rowsAffected = deletePostStmt.executeUpdate();
 
-				conn.commit(); // Commit transaction
+				conn.commit(); 
 				return rowsAffected > 0;
 			} catch (SQLException e) {
-				conn.rollback(); // Rollback on error
+				conn.rollback(); 
 				e.printStackTrace();
 			} finally {
 				conn.setAutoCommit(true);
