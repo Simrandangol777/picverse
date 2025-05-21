@@ -87,8 +87,6 @@ body {
 .login-heading {
   position: relative;
   bottom: 30px;
-  /* margin-bottom: 10px;
-  text-align: center; */
   margin: 10px auto;
 }
 
@@ -101,8 +99,6 @@ body {
   text-align: left;
   margin-right: 30px;
   text-align: right;
-  /* width: 50px; */
-  /* text-align: right; */
 }
 
 

@@ -26,7 +26,7 @@
 
 		<!-- this is the icon navbar of the in the top.  -->
 		<div class="icon-navbar">
-			<a href="home.html" class="login-logo"> <img
+			<a href="${pageContext.request.contextPath}/home" class="login-logo"> <img
 				src="${pageContext.request.contextPath}/resources/Images/logo.png"
 				alt="logo">
 			</a>
