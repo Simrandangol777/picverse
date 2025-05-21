@@ -60,7 +60,6 @@ public class LoginServlet extends HttpServlet {
 		String password = req.getParameter("password");
 
 		System.out.println("username: " + username);
-		System.out.println("password: " + password);
 
 		UserModel userModel = new UserModel(username, password);
 

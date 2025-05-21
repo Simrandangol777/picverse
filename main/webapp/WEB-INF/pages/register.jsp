@@ -51,7 +51,7 @@
 
 				<!-- This is the label and input for the name -->
 				<div class="register-name register-input">
-					<label for="name">Name</label> <input type="text" id="name"
+					<label for="name">Full Name</label> <input type="text" id="name"
 						name="name" placeholder="Enter your name">
 				</div>
 				<br> <br>
