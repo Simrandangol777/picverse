@@ -16,18 +16,21 @@
 		<h1>
 			<b>About Us</b>
 		</h1>
-		
-			<h2>
-				<b>Picverse</b>
-			</h2>
-				<p class="short-info">
-				Picverse is a web application designed for sharing images and posts, similar to a social media platform. 
-				Users can create an account, upload and view images, write captions, and interact with other users' content. 
-				The app typically features user profiles, post creation, and basic error handling for actions like deleting posts. 
-				It's often built using technologies like JSP, Servlets, HTML, CSS, and a backend database to manage users and posts.
-				</p>
-				
-		
+
+		<h2>
+			<b>Picverse</b>
+		</h2>
+		<p class="short-info">Picverse is a photo-sharing web application
+			that allows users to post images with captions, view others' content,
+			and interact in a social-media-like environment. It provides features
+			such as user profiles, post creation, and the ability to explore
+			visual content from different users. The platform focuses on
+			simplicity and user engagement, offering a clean space where people
+			can share their moments through pictures. With basic error handling
+			and user-friendly navigation, Picverse aims to create a smooth and
+			enjoyable image-sharing experience.</p>
+
+		<br> <br> <br> <br>
 		<h1>
 			<b>Members</b>
 		</h1>
@@ -37,7 +40,7 @@
 				<b>Nabin Bista</b>
 			</h2>
 			<div class="member-details">
-			<div class="profile-image">
+				<div class="profile-image">
 					<img
 						src="${pageContext.request.contextPath}/resources/Images/nabin.JPG"
 						alt="Nabin Bista" />
@@ -56,7 +59,9 @@
 					front-end design, with a flair for responsive layouts and
 					accessibility.</p>
 				<div class="profile-image">
-					<img src="${pageContext.request.contextPath}/resources/Images/simran.JPG" alt="Simran Dangol" />
+					<img
+						src="${pageContext.request.contextPath}/resources/Images/simran.JPG"
+						alt="Simran Dangol" />
 				</div>
 			</div>
 		</div>
@@ -66,9 +71,11 @@
 				<b>Prarthana Shahi</b>
 			</h2>
 			<div class="member-details">
-			<div class="profile-image">
-				<img src="${pageContext.request.contextPath}/resources/Images/prarthana.jpeg" alt="Prarthana Shahi" />
-			</div>
+				<div class="profile-image">
+					<img
+						src="${pageContext.request.contextPath}/resources/Images/prarthana.jpeg"
+						alt="Prarthana Shahi" />
+				</div>
 				<p class="short-info">Prarthana excels in project coordination
 					and quality assurance, ensuring that all team goals are met
 					smoothly.</p>
@@ -83,7 +90,9 @@
 				<p class="short-info">Aakriti is known for her problem-solving
 					skills in back-end development and API integration.</p>
 				<div class="profile-image">
-					<img src="${pageContext.request.contextPath}/resources/Images/aakriti.jpeg" alt="Aakriti Chaudhary" />
+					<img
+						src="${pageContext.request.contextPath}/resources/Images/aakriti.jpeg"
+						alt="Aakriti Chaudhary" />
 				</div>
 			</div>
 		</div>
@@ -93,9 +102,11 @@
 				<b>Anushka Adhikari</b>
 			</h2>
 			<div class="member-details">
-			<div class="profile-image">
-				<img src="${pageContext.request.contextPath}/resources/Images/anuskha.jpeg" alt="Anushka Adhikari" />
-			</div>
+				<div class="profile-image">
+					<img
+						src="${pageContext.request.contextPath}/resources/Images/anuskha.jpeg"
+						alt="Anushka Adhikari" />
+				</div>
 				<p class="short-info">Anushka specializes in UI design and
 					brings visual harmony and user-centric design to every project.</p>
 			</div>
@@ -109,7 +120,9 @@
 				<p class="short-info">Santosh is a passionate developer focused
 					on innovative UI/UX solutions.</p>
 				<div class="profile-image">
-					<img src="${pageContext.request.contextPath}/resources/Images/satish.JPG" alt="Santosh Singh Chad" />
+					<img
+						src="${pageContext.request.contextPath}/resources/Images/satish.JPG"
+						alt="Santosh Singh Chad" />
 				</div>
 			</div>
 		</div>

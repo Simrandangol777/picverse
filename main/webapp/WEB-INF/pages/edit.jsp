@@ -26,6 +26,10 @@
 				<textarea name="caption" class="edit-caption" rows="10" cols="30"
 					placeholder="Enter caption or the detail of the post">${post.caption}</textarea>
 
+				<img style="height: 250px; border-radius: 10px;"
+					src="${pageContext.request.contextPath}/uploads/images/${post.image}"
+					alt="Post Image" class="post-img" />
+
 				<!-- File input (you can handle image editing later) -->
 				<!-- <input type="file" class="post-img" accept="image/*" disabled>  -->
 			</div>

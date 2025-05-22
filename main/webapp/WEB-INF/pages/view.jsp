@@ -3,6 +3,7 @@
 <%@ include file="navbar.jsp"%>
 <%@ include file="leftNavbar.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <!DOCTYPE html>
 <html>
@@ -92,7 +93,9 @@
 
 			<!-- 4 Like/Comment Icons -->
 			<div class="view-like">
-				<i class="fa-regular fa-heart"></i> <i class="fa-solid fa-comment"></i>
+				<i class="fa-solid fa-comment"><span
+					style="font-size: 18px; margin-left: 5px">${fn:length(comments) }
+				</span></i>
 			</div>
 
 			<!-- 5 Comment Input Form -->
