@@ -15,7 +15,7 @@ import com.picverse.util.ValidationUtil;
 /**
  * Servlet implementation class RegisterServlet
  */
-@WebServlet("/register")
+@WebServlet(asyncSupported = true, urlPatterns = { "/register" })
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -67,7 +67,6 @@ public class RegisterServlet extends HttpServlet {
 			// Encrypt the password before setting it into the model
 			String encryptedPassword = PasswordUtil.encrypt(username, password);
 
-			
 			/*
 			 * Check if the username or email is already taken. If it is, set an error
 			 * message and forward to the registration page.
@@ -77,7 +76,7 @@ public class RegisterServlet extends HttpServlet {
 				handleError(req, resp, "Username or Email already taken.");
 				return;
 			}
-			
+
 			// Set the user details into the model
 			userModel.setName(name);
 			userModel.setUsername(username);
@@ -128,7 +127,7 @@ public class RegisterServlet extends HttpServlet {
 			return "Username can only contain letters and numbers.";
 		if (!ValidationUtil.isValidEmail(email))
 			return "Email is not valid.";
-		if(!ValidationUtil.isValidPassword(password))
+		if (!ValidationUtil.isValidPassword(password))
 			return "Password must be at least 4 characters long.";
 
 		return null;

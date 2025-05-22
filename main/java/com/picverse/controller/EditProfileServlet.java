@@ -28,6 +28,7 @@ import com.picverse.service.EditProfileService;
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 10)
 @WebServlet(asyncSupported = true, urlPatterns = { "/edit-profile" })
 public class EditProfileServlet extends HttpServlet {
+	// Generated serialVersionUID for serialization
 	private static final long serialVersionUID = 1L;
 	private final EditProfileService service = new EditProfileService();
 
@@ -42,7 +43,7 @@ public class EditProfileServlet extends HttpServlet {
 
 		HttpSession session = request.getSession(false);
 		if (session == null || session.getAttribute("userId") == null) {
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("login");
 			return;
 		}
 

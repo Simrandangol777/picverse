@@ -91,7 +91,15 @@ public class EditProfileService {
 	 */
 	public String saveProfilePicture(Part file, ServletContext context) throws Exception {
 		String imageName = file.getSubmittedFileName();
+		
+		// To give a abosolute path so that image save in the upload image folder.
+		// Give absolute path "C:Advance Java/picverse/src/main/webapp/uploads/images/" of the project in the blank area
+//		String uploadPath = "" + imageName;
+		
+		// This is the link of the temp folder of the image
 		String uploadPath = context.getRealPath("uploads/images/") + imageName;
+		
+		System.out.println("Upload Path: " + uploadPath);
 
 		try (FileOutputStream fos = new FileOutputStream(uploadPath); InputStream is = file.getInputStream()) {
 			byte[] data = new byte[is.available()];
